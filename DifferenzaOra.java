@@ -14,7 +14,10 @@ public class DifferenzaOra{
 		}
 		else{
 			String ora1 = "" + orario1;
-			if(orario1 < 100){
+			if(orario1 < 10){
+				ora1 = "000" + ora1;
+			}
+			else if(orario1 < 100){
 				ora1 = "00" + ora1;
 			}
 			else if(orario1 < 1000){
@@ -44,7 +47,10 @@ public class DifferenzaOra{
 					}
 					else{
 						String ora2 = ""+ orario2;
-						if(orario2 < 100){
+						if(orario2 < 10){
+							ora2 = "000" + ora2;
+						}
+						else if(orario2 < 100){
 							ora2 = "00" + ora2;
 						}
 						else if(orario2 < 1000){
