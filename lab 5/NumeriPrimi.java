@@ -30,14 +30,22 @@ public class NumeriPrimi{
 			if(i == 0){
 				numeri[i] = true;
 			}
+			else if(i == 1){
+			    numeri[i] = false;
+			}
 			else{
-				for(int j = 1; j < max; j++){
+				for(int j = 2; j < i; j++){
 					if((i % j) == 0){
 						numeri[i] = true;
 					}
 				}
 			}
 			
+		}
+		for(int i = 0; i < max; i++){
+		    if(numeri[i] == false){
+		        System.out.println(i);
+		    }
 		}
 		scan.close();
 	}
