@@ -3,16 +3,16 @@ public class Sol5_4
      Stringa s = new Stringa("Un esercizio davvero facilissimo!");
 Stringa sa = new Stringa("UUnn ");
  Stringa sb = sa.substring(sa.indexOf(new Stringa("U")),
- sa.lastIndexOf(new Stringa("U")));
- Stringa s2 = new Stringa("");
- s2 = s2.concat(sb);
- s2 = s2.concat(sa.substring(2, 3));
- s2 = s2.concat(sa.substring(sa.length()-1));
+ sa.lastIndexOf(new Stringa("U"))); //U
+ Stringa s2 = new Stringa(""); //""
+ s2 = s2.concat(sb);//U
+ s2 = s2.concat(sa.substring(2, 3));//Un
+ s2 = s2.concat(sa.substring(sa.length()-1));//Unn
  sb = new Stringa("esercizio ");
  if (sa.endsWith(new Stringa(" ")))
- s2 = s2.concat(sb);
+ s2 = s2.concat(sb);//Unnesercizio
  else
- s2 = s2.concat(sa);
+ s2 = s2.concat(sa);//Unn Unn "
  s2 = s2.concat(s.substring(s.indexOf(new Stringa("d"))));
  if (s.compareTo(s2) == 0)
  System.out.println("Collaudo effettuato con successo");
@@ -37,47 +37,23 @@ class Stringa{
     }
     public int compareTo(Stringa s){
         int risultato = 0;
-        if(this.l < s.l){
-            risultato = -1;
-        }
-        else if(this.l > s.l){
-            risultato = 1;
-        }
-        else if(this.l == s.l){
-            for(int i = 0; i < this.l; i++){
-                if(this.stringa[i] != s.stringa[i]){
-                    risultato = 1;
-                    break;
-                }
+        for(int i = 0; i < this.l; i++){
+        risultato = this.stringa[i] - s.stringa[i];
+            if(risultato != 0){
+                break;
             }
         }
         return risultato;
     }
     public Stringa concat(Stringa s){
         String temp = "";
-        int lunghezza = this.l + s.l;
-        for(int i =  0; i < lunghezza; i++){
-            if(i < s.l){
-                temp = temp + s.stringa[i];
-            }
-            else{
-                temp = temp + "";
-            }
+        for(int i =  0; i < this.l; i++){
+            temp = temp + this.stringa[i];
+        }
+        for(int i = 0; i < s.l; i++){
+            temp = temp + s.stringa[i];
         }
         Stringa pippo = new Stringa(temp);
-        for(int i = 0; i < this.l; i++){
-                pippo.stringa[i] = this.stringa[i]; 
-        }
-        if(this.l < 1){
-            for(int i = 0; i < s.l; i++){
-                pippo.stringa[i] = s.stringa[i]; 
-            }
-        }
-        else{
-            for(int i = this.l, j = 0; i < lunghezza &&  j < s.l;   i++, j++ ){
-                pippo.stringa[i] = this.stringa[j];
-            }
-        }
         return pippo;
     }
     public boolean endsWith(Stringa s){
