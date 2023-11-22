@@ -32,6 +32,13 @@ class Stringa{
             this.stringa[i] = s.charAt(i);
         }
     }
+    public Stringa(int i){
+        this.l = i;
+        stringa = new char[i];
+        for(int j = 0; j < i; j++){
+            this.stringa[j] = ' ';
+        }
+    }
     public char charAt(int index){
         char risultato = stringa[index];
         return risultato;
@@ -47,23 +54,22 @@ class Stringa{
         return risultato;
     }
     public Stringa concat(Stringa s){
-        String temp = "";
+        int lunghezza = this.l + s.l;
+        Stringa pippo = new Stringa(lunghezza);
         for(int i =  0; i < this.l; i++){
-            temp = temp + this.stringa[i];
+            pippo.stringa[i] = this.stringa[i];
         }
-        for(int i = 0; i < s.l; i++){
-            temp = temp + s.stringa[i];
+        for(int i = this.l, j = 0; i < lunghezza && j < s.l; i++, j++){
+            pippo.stringa[i] = s.stringa[j];
         }
-        Stringa pippo = new Stringa(temp);
         return pippo;
     }
     public boolean endsWith(Stringa s){
-        String temp = "";
+        Stringa pippo = new Stringa(s.l);
         boolean check = false;
             for(int i =  0; i < s.l; i++){
-                temp = temp + s.stringa[i];
+                pippo.stringa[i] = s.stringa[i];
             }
-        Stringa pippo = new Stringa(temp);
         for(int i  = (this.l - pippo.l); i < this.l; i++ ){
             for(int j = 0; j < pippo.l; j++){
                 if(this.stringa[i + j] == pippo.stringa[j] ){
@@ -79,13 +85,12 @@ class Stringa{
          return check;
     }
     public int indexOf(Stringa s){
-        String temp = "";
+        Stringa pippo = new Stringa(s.l);
         int index = 0;
         boolean trovato = false;
             for(int i =  0; i < s.l; i++){
-                temp = temp + s.stringa[i];
+                pippo.stringa[i] = s.stringa[i];
             }
-        Stringa pippo = new Stringa(temp);
         for (int i = 0; i < this.l; i++){
    			int j;         
 			for(j = 0; j < pippo.l; j++){
@@ -105,13 +110,12 @@ class Stringa{
          return index;
     }
     public int indexOf(Stringa s, int fromIndex){
-        String temp = "";
+        Stringa pippo = new Stringa(s.l);
         int index = 0;
         boolean trovato = false;
             for(int i =  0; i < s.l; i++){
-                temp = temp + s.stringa[i];
+                pippo.stringa[i] = s.stringa[i];
             }
-        Stringa pippo = new Stringa(temp);
         for (int i = fromIndex; i < this.l; i++){
    			int j;         
 			for(j = 0; j < pippo.l; j++){
@@ -131,12 +135,11 @@ class Stringa{
          return index;
     }
     public int lastIndexOf(Stringa s){
-        String temp = "";
+        Stringa pippo = new Stringa(s.l);
         int index = 0;
             for(int i =  0; i < s.l; i++){
-                temp = temp + s.stringa[i];
+                pippo.stringa[i] =  s.stringa[i];
             }
-        Stringa pippo = new Stringa(temp);
         for (int i = 0; i < this.l; i++){
    			int j;         
 			for(j = 0; j < pippo.l; j++){
@@ -151,12 +154,11 @@ class Stringa{
          return index;
     }
     public int lastIndexOf(Stringa s, int fromIndex){
-        String temp = "";
+        Stringa pippo = new Stringa(s.l);
         int index = 0;
             for(int i =  0; i < s.l; i++){
-                temp = temp + s.stringa[i];
+                pippo.stringa[i] = s.stringa[i];
             }
-        Stringa pippo = new Stringa(temp);
         for (int i = fromIndex; i < this.l; i++){
    			int j;         
 			for(j = 0; j < pippo.l; j++){
@@ -175,20 +177,20 @@ class Stringa{
         return lunghezza;
     }
     public Stringa substring(int beginIndex){
-        String temp = "";
-            for(int i =  beginIndex; i < this.l; i++){
-                temp = temp + this.stringa[i];
+        int lunghezza = this.l - beginIndex;
+        Stringa pippo = new Stringa(lunghezza);
+            for(int i =  beginIndex, j = 0; i < this.l && j< lunghezza; i++ , j++){
+                pippo.stringa[j] = this.stringa[i];
             }
-        Stringa tempor = new Stringa(temp);
-        return tempor;
+        return pippo;
     }
      public Stringa substring(int beginIndex, int endIndex){
-        String temp = "";
-            for(int i =  beginIndex; i < endIndex; i++){
-                temp = temp + this.stringa[i];
+            int lunghezza = endIndex - beginIndex;
+             Stringa pippo = new Stringa(lunghezza);
+            for(int i =  beginIndex, j = 0; i < endIndex && j< lunghezza; i++, j++){
+                pippo.stringa[j] = this.stringa[i];
             }
-         Stringa tempor = new Stringa(temp);
-        return tempor;
+        return pippo;
     }
      public void stampa(){
         String temp = "";
