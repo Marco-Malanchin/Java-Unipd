@@ -41,7 +41,7 @@ public class RicorsioneFibonacci{
     public static long  recursiveFib(int n){
         long[] pippo = new long[n + 1];
         if(n == 0){
-            return 1;
+            return 0;
         }
         else if (n == 1){
             return 1;
@@ -51,14 +51,14 @@ public class RicorsioneFibonacci{
     }
     public static long iterativeFib(int n){
         if(n == 0){
-            return 1;
+            return 0;
         }
         else if(n == 1){
             return 1;
         }
         else{
             int fibonacci = 0;
-            int n2 = 1;
+            int n2 = 0;
             int n1 = 1;
             for(int i = 2; i <= n; i++){
                 fibonacci = n2 + n1;
