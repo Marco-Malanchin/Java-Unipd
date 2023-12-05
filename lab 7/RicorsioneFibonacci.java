@@ -30,10 +30,10 @@ public class RicorsioneFibonacci{
         long fibonacci2 = (long) iterativeFib(n);
         long end2 = System.currentTimeMillis();
         long time2 = end2 - start2;
-        System.out.println("Il valore della sequanza di fibonacci in posizione " + n + " calcolato con il metodo ricorsivo  e': ");
+        System.out.println("Il valore della sequenza di fibonacci in posizione " + n + " calcolato con il metodo ricorsivo  e': ");
         System.out.println(fibonacci1);
         System.out.println("Il metodo ricorsivo ha impiegato " + time1 + " millisecondi");
-        System.out.println("Il valore della sequanza di fibonacci in posizione " + n + " calcolato con il metodo iterativo e': ");
+        System.out.println("Il valore della sequenza di fibonacci in posizione " + n + " calcolato con il metodo iterativo e': ");
         System.out.println(fibonacci2);
         System.out.println("Il metodo iterativo ha impiegato " + time2 + " millisecondi");
          scan.close();
