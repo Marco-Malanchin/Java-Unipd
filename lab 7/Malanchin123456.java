@@ -134,7 +134,10 @@ class MyMultiStack implements MultiStack
 // questa classe non puo' avere variabili statiche;
     public String toString(){
         String count = "";
-        for(i = 0; i < )
+        for(i = 0; i < v.length; i++){
+            count = dim(i) + " ";
+        }
+        return count;
     }
 }
 interface Container
