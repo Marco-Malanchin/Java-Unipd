@@ -1,24 +1,25 @@
 public class ListIteratorTester{
-	public static void main(String[] args){  
-		LinkedList list = new LinkedList();
-   		list.addFirst("A");
-   		list.addLast("B");
-   		list.addFirst("C");
-   		ListIterator iter = list.getIterator();
-   		iter.next();
-   		iter.add("I");
-   		while (iter.hasNext())
-      			iter.next();
-   		iter.remove();
-   		list.addLast("O");
-   		iter = list.getIterator();
-   		while (iter.hasNext())
-      		System.out.print(iter.next());
+	public static void main(String[] args)
+{  LinkedList list = new LinkedList();
+   list.addFirst("A");
+   list.addLast("B");
+   list.addFirst("C");
+   ListIterator iter = list.getIterator();
+   iter.next();
+   iter.add("I");
+   while (iter.hasNext()){
+      iter.next();}
+   iter.remove();
+   list.addLast("O");
+   iter = list.getIterator();
+   while (iter.hasNext())
+      System.out.print(iter.next());
 	}
-	private interface List extends Container{
+}
+interface List extends Container{
 		ListIterator getIterator();
 	}
-	private interface ListIterator{
+interface ListIterator{
   	/*
       comportamento del costruttore di una
       classe che realizza questa interfaccia:
@@ -65,8 +66,8 @@ next senza che venga lanciata un'eccezione
      invocato il metodo remove)
    	*/
 		void remove();
-	}
-	private class LinkedList implements List{
+}
+class LinkedList implements List{
 		private class ListNode{
 			private Object element;
 			private ListNode next;
@@ -105,6 +106,7 @@ next senza che venga lanciata un'eccezione
 				if(!hasNext()){
 					throw new IllegalStateException();
 				}
+				previous = current;
 				current = current.getNext();
 				return current.getElement();
 			}
@@ -166,11 +168,11 @@ next senza che venga lanciata un'eccezione
 		}
 		public void addLast(Object e){
 			tail.setNext(new ListNode(e, null));
-			tail.getNext();
+			tail = tail.getNext();
 		}
 		public Object removeLast(){
 			Object e = getLast();
-			ListNode temp = head.getNext();
+			ListNode temp = head;
 			while(temp.getNext() != tail){
 				temp = temp.getNext();
 			}
@@ -182,11 +184,10 @@ next senza che venga lanciata un'eccezione
 			
 			return new LinkedListIterator(head);
 		}
-	}
-	class EmptyLinkedListException extends RuntimeException{
-	}
-	interface Container{
+}
+class EmptyLinkedListException extends RuntimeException{
+}
+interface Container{
 		boolean isEmpty();
 		void makeEmpty();
-	}
 }
