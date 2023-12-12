@@ -18,13 +18,35 @@ public class Tokenizzatore{
             String temp = "";
             while(riga.hasNext()){
                 String parola = riga.next();
-                char primoCarattere = parola.charAt(0);
-                primoCarattere = Character.toUpperCase(primoCarattere);
-                String parteRimanente = parola.substring(1);
-                parteRimanente = parteRimanente.toLowerCase();
-                parola = primoCarattere + parteRimanente;
-                parola = parola + " ";
-                temp = temp + parola;
+                int posizione = 0;
+                boolean apostrofo = false;
+                for(int i = 0; i < parola.length(); i++){
+                    if(parola.charAt(i) == 39){ //valore ascii dell' apostrofo
+                        posizione = i + 1;
+                        char primoCarattere = parola.charAt(0);
+                        primoCarattere = Character.toUpperCase(primoCarattere);
+                        String parteRimanente = parola.substring(1, posizione);
+                        parteRimanente = parteRimanente.toLowerCase();
+                        char secondoCarattere = parola.charAt(posizione);
+                        secondoCarattere = Character.toUpperCase(secondoCarattere);
+                         String parteRimanente2 = parola.substring(posizione + 1);
+                        parteRimanente2 = parteRimanente2.toLowerCase();
+                        parola = primoCarattere + parteRimanente +secondoCarattere + parteRimanente2 ;
+                        parola = parola + " ";
+                        temp = temp + parola;
+                        apostrofo = true;
+                        break;
+                    }
+                }
+                if(!apostrofo){
+                    char primoCarattere = parola.charAt(0);
+                    primoCarattere = Character.toUpperCase(primoCarattere);
+                    String parteRimanente = parola.substring(1);
+                    parteRimanente = parteRimanente.toLowerCase();
+                    parola = primoCarattere + parteRimanente;
+                    parola = parola + " ";
+                    temp = temp + parola;
+                }
             }
             pr.println(temp);
         }
