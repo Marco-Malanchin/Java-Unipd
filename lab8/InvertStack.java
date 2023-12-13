@@ -7,6 +7,7 @@ public class InvertStack{
         boolean controllo = true;
         Scanner scan = new Scanner(System.in);
         StackX numeri = new StackX();
+        StackX numeriNonInvertiti = new StackX();
         String riga = "";
         while(controllo = true){
             riga = scan.nextLine();
@@ -22,6 +23,7 @@ public class InvertStack{
                     String parola = scan2.next();
                     temp = Integer.valueOf(parola);
                     numeri.push(temp);
+                    numeriNonInvertiti.push(temp);
                 }
                 catch(NumberFormatException e){
                     System.out.println("valore inserito in maniera errata!!!");
@@ -30,9 +32,14 @@ public class InvertStack{
             }
             scan2.close();
         }
+         System.out.println("Stack prima di  essere invertito:");
+        while(!numeriNonInvertiti.isEmpty()){
+        System.out.println(numeriNonInvertiti.pop());
+        }
         StackX.inverti(numeri);
+        System.out.println("\nStack dopo essere stato invertito:");
         while(!numeri.isEmpty()){
-            System.out.println(numeri.pop());
+        System.out.println(numeri.pop());
         }
         scan.close();
     }
@@ -86,10 +93,16 @@ class StackX implements Stack{
     }
     public static void inverti(StackX pippo){
         StackX temp = new StackX();
+        StackX temp2 = new StackX();
         while(!pippo.isEmpty()){
             temp.push(pippo.pop());
         }
-        pippo = temp;
+        while(!temp.isEmpty()){
+            temp2.push(temp.pop());
+        }
+        while(!temp2.isEmpty()){
+            pippo.push(temp2.pop());
+        }
     }
 }
 class EmptyStackException extends RuntimeException{}
