@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class StackOrdinati{
+public class StackOrdinati2{
 	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
 		StackX numeri = new StackX();
@@ -112,7 +112,7 @@ class StackX implements Stack{
       		Stack temp1 = new StackX();
       		// contiamo gli elementi presenti nella pila originaria:
      		// per farlo occorre trasferire tutti gli elementi nella
-      		// pila temporanea, contandoli; al termine del conteggio
+      		// pila temporanea, contandoli;             al termine del conteggio
       		// gli elementi verranno riportati nella pila originaria
       		int count = 0;
       		while (!a.isEmpty()){
