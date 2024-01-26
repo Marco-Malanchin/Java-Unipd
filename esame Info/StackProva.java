@@ -21,8 +21,8 @@ interface Stack extends Container{
 }
 
 class StackArray implements Stack{
-    protected Object[]v;
-    protected int vSize;
+    private Object[]v;
+    private int vSize;
     public StackArray(){
         v = new Object[100];
         makeEmpty();
