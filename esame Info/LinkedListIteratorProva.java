@@ -96,7 +96,7 @@ class Lista{
             }
             previus = current;
             current = current.getNext();
-            return curren.getElement();
+            return current.getElement();
         }
         public void add(Object x){
              Node temp = new Node(x, current.getNext());
