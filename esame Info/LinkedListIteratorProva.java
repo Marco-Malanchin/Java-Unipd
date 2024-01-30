@@ -82,8 +82,10 @@ class Lista{
     }
     private class Iteratore implements ListIterator{
        private Node current;
+       private Node previus;
         public Iteratore(Node head){
             current = head;
+            previus = null;
         }
         public boolean hasNext(){
             return current.getNext() != null;
@@ -92,8 +94,29 @@ class Lista{
             if(!hasNext()){
                 throw new IllegalStateException();
             }
+            previus = current;
             current = current.getNext();
             return curren.getElement();
+        }
+        public void add(Object x){
+             Node temp = new Node(x, current.getNext());
+             current.setNext(temp);
+             previus = current;
+             current = current.getNext();
+             if(!hasNext()){
+                Lista.this.tail = current;
+            }
+        }
+        public void remove(){
+            if(previus == null){
+                throw new IllegalStateException();
+            }
+            previus.setNext(current.getNext());
+            current = previus;
+            previus = null;
+            if(!hasNext()){
+                Lista.this.tail = current;
+            }
         }
     }
 }
