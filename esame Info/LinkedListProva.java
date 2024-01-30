@@ -43,6 +43,16 @@ class Lista{
         tail.setNext(temp);
         tail = tail.getNext();
     }
+    public Object removeLast(){
+        Object removal = getLast();
+        Node temp = head
+        while(temp.getNext() != tail){
+            temp = temp.getNext();
+        }
+        tail = temp;
+        tail.setNext(null);
+        return removal;
+    }
     private class Node{
         private Object element;
         private Node next;
@@ -54,16 +64,16 @@ class Lista{
             element = null;
             next = null;
         }
-         private Object getElement(){
+         public Object getElement(){
             return element;
         }
-        private void setElement(Object e){
+        public void setElement(Object e){
             element = e;
         }
-         private Object getNext(){
+         public Object getNext(){
             return next;
         }
-        private void setNext(Node e){
+        public void setNext(Node e){
             next = e;
         }
     }

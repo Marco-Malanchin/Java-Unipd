@@ -1,4 +1,4 @@
-public class CodaProva{
+ public class CodaProva{
     public static void main(String[] args){
         QueueArray pippo = new QueueArray();
         pippo.enqueue(10);
@@ -40,10 +40,10 @@ class QueueArray implements Queue{
         System.arraycopy(e, 0, temp, 0, e.length);
         return temp;
     }
-    protected int increment(int index){
+    protected int increment(int index){//O(1)
         return (index + 1) % v.length;
     }
-    public void enqueue(Object e){
+    public void enqueue(Object e){//O(1)
         if(increment(back) == front){
             v = resize(v, v.length * 2);
             if(back < front){
@@ -54,13 +54,13 @@ class QueueArray implements Queue{
         v[back] = e;
         back = increment(back);
     }
-    public Object getFront(){
+    public Object getFront(){//O(1)
         if(isEmpty()){
             throw new EmptyQueueException();
         }
         return v[front];
     }
-    public Object dequeue(){
+    public Object dequeue(){//O(1)
         Object temp = getFront();
         front =increment(front);
         return temp;

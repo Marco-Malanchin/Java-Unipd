@@ -22,7 +22,7 @@ interface Stack extends Container{
 
 class StackArray implements Stack{
     private Object[]v;
-    private int vSize;
+    private  int vSize;
     public StackArray(){
         v = new Object[100];
         makeEmpty();
@@ -41,19 +41,19 @@ class StackArray implements Stack{
     public boolean isEmpty(){
         return(vSize == 0);
     }
-    public void push(Object e){
+    public void push(Object e){ //O(1)
         if(vSize == v.length){
             v = resize(v, 2* v.length);
         }
         v[vSize++] = e;
     }
-    public Object top(){
+    public Object top(){//O(1)
         if(isEmpty()){
             throw new EmptyStackException();
         }
         return v[vSize - 1];
     }
-    public Object pop(){
+    public Object pop(){//O(1)
         Object temp = top();
         vSize--;
         return temp;

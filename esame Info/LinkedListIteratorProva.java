@@ -53,8 +53,8 @@ class Lista{
         tail.setNext(null);
         return removal;
     }
-    public ListIterator getIterator(){ 
-        return new LinkedListIterator(head); 
+    public Iteratore getIterator(){ 
+        return new Iteratore(head); 
     }
     private class Node{
         private Object element;

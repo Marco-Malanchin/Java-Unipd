@@ -27,7 +27,7 @@ class ArraySet implements Set{
     public boolean isEmpty(){
         return (vSize == 0);
     }
-    public Object[] toArray(){
+    public Object[] toArray(){ //O(n)
         Object[] temp = new Object[vSize];
         System.arraycopy(v, 0 , temp, 0, vSize);
         return temp;
@@ -40,7 +40,7 @@ class ArraySet implements Set{
         System.arraycopy(v, 0 , temp, 0, e.length);
         return temp;
      }
-     public boolean contains(Object e){
+     public boolean contains(Object e){//O(n)
         if(isEmpty()){
             throw new EmptySetException();
         }
@@ -51,7 +51,7 @@ class ArraySet implements Set{
         }
         return false;
      }
-     public void add(Object e){
+     public void add(Object e){//O(n)
         if(contains(e) == true){
             return;
         }
@@ -60,8 +60,8 @@ class ArraySet implements Set{
         }
         v[vSize++] = e;
      }
-    public static Set union(Set s1, Set s2){
-        Set temp = new ArraySet();
+    public static Set union(Set s1, Set s2){//O(n^2)
+        Set temp = new Set();
         Object[] v  = s1.toArray();
         for(int i = 0; i< v.length; i++){//Inserisco gli elementi del primo insieme
             temp.add(v[i]);
@@ -72,7 +72,7 @@ class ArraySet implements Set{
         }
         return temp;
     }
-    public static Set intersection(Set s1, Set s2){
+    public static Set intersection(Set s1, Set s2){//O(n^2)
         Set temp = new ArraySet();
         Object[] v = s1.toArray();
         for(int i = 0; i < v.length; i++){
@@ -82,7 +82,7 @@ class ArraySet implements Set{
         }
         return temp;
     }
-    public static Set subtract(Set s1, Set s2){
+    public static Set subtract(Set s1, Set s2){//O(n^2)
         Set temp = new ArraySet();
         Object[] v = s1.toArray();
         for(int i  = 0; i < v.length; i++){

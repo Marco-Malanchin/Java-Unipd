@@ -30,8 +30,8 @@ class InsiemeOrdinato implements SortedSet{
     public boolean isEmpty(){
         return (vSize == 0);
     }
-    private void resize(Object[] e, int l){
-        Object[] temp = new Object[l];
+    private void resize(Comparable[] e, int l){
+        Comparable[] temp = new Comparable[l];
         System.arraycopy(e, 0, temp, 0, e.length):
         e = temp;
     }
@@ -113,11 +113,12 @@ public static SortedSet intersection(ArraySortedSet s1,ArraySortedSet s2)
     for (int i = 0, j = 0; i < v1.length; i++)
     { while (j < v2.length && v1[i].compareTo(v2[j]) > 0){
             j++;
-            if (j == v2.length){
+        }
+        if (j == v2.length){
                 break;
-            }
-            if (v1[i].compareTo(v2[j]) == 0)
-            {x.add(v1[i]); j++;}
+        }
+        if (v1[i].compareTo(v2[j]) == 0){
+            x.add(v1[i]); j++;
         }
     }
  return x;
@@ -130,13 +131,13 @@ public static SortedSet subtract(ArraySortedSet s1,ArraySortedSet s2)
     for (i = 0, j = 0; i < v1.length; i++)
     { while (j < v2.length && v1[i].compareTo(v2[j]) > 0){
          j++;
+        }
         if (j == v2.length){
              break;
         }
          if (v1[i].compareTo(v2[j]) != 0){
             x.add(v1[i]);
          }
-    }
  }
  while (i < v1.length) {
     x.add(v[i++]);

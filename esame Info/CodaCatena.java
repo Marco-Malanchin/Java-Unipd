@@ -87,3 +87,22 @@ interface Queue extends Container{
             }
         }
     }
+class EmptyLinkedListExceptio extends RuntimeException{}
+public class LinkedListQueue implements Queue{
+    private LinkedList list = new LinkedList();
+    public void enqueue(Object obj){
+        list.addLast(obj);
+    }
+    public Object dequeue(){
+        return list.removeFirst();
+    }
+    public Object getFront(){
+        return list.getFirst();
+    }
+     public void makeEmpty(){
+        list.makeEmpty();
+    }
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
+}
